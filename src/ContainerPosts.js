@@ -1,3 +1,5 @@
+import React from 'react';
+
 function ContainerPosts(){
     const posts = [
         {
@@ -34,9 +36,9 @@ function ContainerPosts(){
 
     function ContentPost(props){
         return (
-            <div class="conteudo">
+            <div class="conteudo" onDoubleClick={() => {setIconLike('heart')}}>
             <img src={props.img} />
-        </div>
+            </div>
         )
     }
 
@@ -51,11 +53,31 @@ function ContainerPosts(){
         )
     }
 
+    /*function Icone(){
+        return (
+                    <ion-icon name={iconLike} onClick={() => {
+                        if(iconLike === 'heart'){
+                            setIconLike('heart-outline')
+                        } if(iconLike === 'heart-outline'){
+                            setIconLike('heart')
+                        }
+                    }}></ion-icon>
+        )
+    };*/
+
+    const [iconLike, setIconLike] = React.useState('heart-outline');
+
     function Actions(){
         return (
             <div class="acoes">
                 <div>
-                    <ion-icon name="heart-outline"></ion-icon>
+                    <ion-icon name={iconLike} onClick={() => {
+                        if(iconLike === 'heart'){
+                            setIconLike('heart-outline')
+                        } if(iconLike === 'heart-outline'){
+                            setIconLike('heart')
+                        }
+                    }}></ion-icon>
                     <ion-icon name="chatbubble-outline"></ion-icon>
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </div>
@@ -63,9 +85,9 @@ function ContainerPosts(){
                     <ion-icon name="bookmark-outline"></ion-icon>
                 </div>
             </div>
-            
         )
     }
+
 
     const templatePosts = posts.map((post) => {
         return (
