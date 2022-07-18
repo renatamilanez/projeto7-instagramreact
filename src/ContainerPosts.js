@@ -36,7 +36,7 @@ function ContainerPosts(){
 
     function ContentPost(props){
         return (
-            <div class="conteudo" onDoubleClick={() => {setIconLike('heart')}}>
+            <div class="conteudo" onDoubleClick={likedPost}>
             <img src={props.img} />
             </div>
         )
@@ -53,17 +53,14 @@ function ContainerPosts(){
         )
     }
 
-    /*function Icone(){
-        return (
-                    <ion-icon name={iconLike} onClick={() => {
-                        if(iconLike === 'heart'){
-                            setIconLike('heart-outline')
-                        } if(iconLike === 'heart-outline'){
-                            setIconLike('heart')
-                        }
-                    }}></ion-icon>
-        )
-    };*/
+
+    function likedPost(){
+        if(iconLike === 'heart'){
+            setIconLike('heart-outline')
+        } if(iconLike === 'heart-outline'){
+            setIconLike('heart')
+        }
+    }
 
     const [iconLike, setIconLike] = React.useState('heart-outline');
 
@@ -71,12 +68,7 @@ function ContainerPosts(){
         return (
             <div class="acoes">
                 <div>
-                    <ion-icon name={iconLike} onClick={() => {
-                        if(iconLike === 'heart'){
-                            setIconLike('heart-outline')
-                        } if(iconLike === 'heart-outline'){
-                            setIconLike('heart')
-                        }
+                    <ion-icon name={iconLike} onClick={() => {likedPost()
                     }}></ion-icon>
                     <ion-icon name="chatbubble-outline"></ion-icon>
                     <ion-icon name="paper-plane-outline"></ion-icon>
